@@ -1,0 +1,57 @@
+
+<div class="container">
+   
+   <div class="row">
+     <div class="col-md-8">
+        <div class="mat-title"> Customer List</div>
+     </div>
+     <div class="col-md-2">
+        <button type="button" mat-raised-button routerLink='/customer' style='float: right;'>&nbsp;Back</button>
+     </div>
+     <div class="col-md-2">
+        <button type="button"  mat-button class="button btn-danger" (click)='deleteCustomers()'>Delete All</button>
+     </div>
+   </div>
+</div>
+
+
+<div class="container">
+   
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+            
+                    <tr *ngFor="let customer of customers | async">
+                        <td>{{customer.id}}</td>
+                        <td>{{customer.name}}</td>
+                        <td>{{customer.age}}</td>
+                        <td><button mat-raised-button *ngIf='customer.active' (click)='updateActive(false,customer)'>Inactive</button>
+                   
+                          <button mat-raised-button *ngIf='!customer.active' (click)='updateActive(true,customer)'>Active</button>
+                         </td>
+                        <td><button mat-raised-button color='accent' (click)='deleteCustomer(customer)'>Delete</button></td>
+                    </tr>
+            
+                </tbody>
+                </table>
+
+        </div>
+    </div>
+  </div>
+
+
+
+ 
+<div>
+ 
+</div>

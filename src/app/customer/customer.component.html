@@ -1,0 +1,128 @@
+
+
+<div class='container'>
+    <div class="row"><h3>Customers</h3></div>
+    <div class="row">
+        <div style="padding: 20px;">
+            <!-- <h2 style="color: blue">{{title}}</h2> -->
+            <div class="mat-headline" style="color: blue" layout-align="start center">{{title}}</div>
+           
+            <nav>
+              
+              <a routerLink="list" mat-raised-button color='primary' class='button' role="button" routerLinkActive="active">Customers List</a>
+              <a routerLink="add" mat-raised-button color='accent' class='button' role="button" routerLinkActive="active">Add</a>
+              <a routerLink="findbyage" mat-raised-button color='warn' class='button' role="button" routerLinkActive="active">Search</a>
+            </nav>
+           
+          </div>
+    </div>
+    <div class="row">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+  
+
+
+<!-- <p>Customers</p>
+<ul>
+    <li *ngFor="let customer of observableCustomers| async;
+     index as i; odd as odd; even as even;   trackBy as trackByFunction"
+      [ngClass]="{ odd: odd, even: even }">
+        {{i}} --- {{ customer | json }}
+    </li>
+   
+</ul>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidebar [(opened)]="opened" mode="side">
+            Side Nav
+           
+            <mat-list>
+              <mat-list-item>Home</mat-list-item>
+              <mat-list-item>About</mat-list-item>
+              <mat-list-item>Services</mat-list-item>
+            </mat-list>
+           
+    </mat-sidenav>
+    <mat-sidenav-content> Main
+  
+      <button (click)="opened=!opened">Toggle</button>
+      <button (click)="sidebar.toggle()">Toggle</button>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  
+  
+  
+   <mat-toolbar color="primary" class="navbar">
+    <div>Project Name</div>
+    <div>
+      <span>Home</span>
+      <span>About</span>
+      <span>Services</span>
+  
+    </div>
+  </mat-toolbar>  
+  
+  <button mat-button> Hello World</button><br><br>
+  <button mat-raised-button color="primary"> primary</button><br><br>
+  
+  <button mat-flat-button color="warn"> Warn button</button><br><br>
+  
+  <button mat-stroked-button color="accent"> accent button</button><br><br>
+  
+  <button mat-icon-button> Hello World</button><br><br>
+  <button mat-raised-button> Hello World</button><br><br>
+  <button mat-fab> Hello World</button><br><br>
+  <button mat-mini-fab> Hello World</button>
+  
+  
+  <h3>Stroked Buttons</h3>
+  <div class="example-button-row">
+    <button mat-stroked-button>Basic</button>
+    <button mat-stroked-button color="primary">Primary</button>
+    <button mat-stroked-button color="accent">Accent</button>
+    <button mat-stroked-button color="warn">Warn</button>
+    <button mat-stroked-button disabled>Disabled</button>
+    <a mat-stroked-button routerLink=".">Link</a>
+  </div>
+  
+  <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+  
+  <div class="mat-display-4">mat-dispaly-4</div><br><br>
+  
+  <div class="mat-display-3">mat-dispaly-3</div><br><br>
+  
+  <div class="mat-display-2">mat-dispaly-2</div><br><br>
+  
+  <div class="mat-display-1">mat-dispaly-1</div><br><br><br><br><br><br>
+  
+  
+  <div class="mat-headline">mat-headline</div><br><br>
+  
+  <div class="mat-title">mat-Title</div><br><br>
+  
+  <div class="mat-subheadling-2">mat-subheadling-2</div><br><br>
+  
+  <div class="mat-subheadling-1">mat-subheadling-1</div><br><br>
+  
+  
+  <div class="mat-body-1">mat-body</div><br><br>
+  
+  <div class="mat-body-2">mat-body-2</div><br><br>
+  
+  <div class="mat-caption">mat-caption-1</div><br><br>
+  
+  <mat-button-toggle #toggleButton>Toggle Button</mat-button-toggle>
+  {{toggleButton.checked}}
+  
+  <mat-icon color="primary">grade</mat-icon><br><br>
+  
+  <div>
+    
+    <span [matBadge]="notifications" [matBadgeHidden]="notifications ===0 ">Notifications</span>
+  
+  </div><br><br>
+  
+  <mat-spinner *ngIf="showSpinner"></mat-spinner>
+  <button (click)="loadData()">Load Data</button> -->
