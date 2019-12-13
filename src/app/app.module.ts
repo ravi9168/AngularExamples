@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule,APP_INITIALIZER } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS,HttpClientModule,HttpClient } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { delay } from 'rxjs/operators';
 
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
@@ -35,6 +35,24 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ContactComponent } from './contact/contact.component';
 
+export function initApp(http: HttpClient) {
+  // return () => {
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       console.log('In initApp');
+  //       resolve();
+  //     }, 3000);
+  //   });
+  // };
+
+  return () => {
+    return http.get('http://54.157.52.31:4000/user/list')
+      .toPromise()
+      .then((resp) => {
+        console.log('Response 1 - ', resp);
+      });
+  };
+}
 
 
 @NgModule({
@@ -74,9 +92,24 @@ import { ContactComponent } from './contact/contact.component';
   providers: [
     {
     provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }],
+    useClass: TokenInterceptor,    
+    multi: true,
+   
+  },
+  {
+    provide: APP_INITIALIZER,
+    useFactory: initApp,
+    multi: true,
+    deps: [HttpClient]
+  },
+  /*{ provide: APP_BASE_HREF, useValue: '/' },
+  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  { provide: 'AUTH_URL', useValue: 'http://localhost:8080/auth' },
+  { provide: 'API_URL', useValue: 'http://localhost:8080/api' },
+  { provide: 'HEADERS', useValue: new HttpHeaders({'Content-Type': 'application/json'}) }
+  */
+ 
+],
   bootstrap: [AppComponent]
   
 })

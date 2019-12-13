@@ -3,6 +3,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Title }     from '@angular/platform-browser';
 
 
 
@@ -20,9 +21,11 @@ export class RegisterComponent implements OnInit {
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService,
+    private title:Title) { }
 
   ngOnInit() {
+    this.title.setTitle("Registation");
     this.registerForm = this.formBuilder.group({
       'fullName' : [null, Validators.required],
       'email' : [null, Validators.required],

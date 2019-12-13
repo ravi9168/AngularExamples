@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title} from '@angular/platform-browser';
 
 import { Customer } from '../model/customer';
 import { CustomerService } from '../services/customer.service';
@@ -13,9 +14,10 @@ export class CreateCustomerComponent implements OnInit {
   submitted = false;
   title = 'Spring Boot with Angular 8';
  
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService,private mtitle: Title) { }
  
   ngOnInit() {
+    this.mtitle.setTitle("Create Customer");
   }
  
   newCustomer(): void {

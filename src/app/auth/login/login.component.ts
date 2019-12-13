@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Title }     from '@angular/platform-browser';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from '../../auth.service';
-import { Router } from '@angular/router';
+
 import { ErrorStateMatcher } from '@angular/material/core';
 
 
@@ -17,9 +19,12 @@ export class LoginComponent implements OnInit {
   password = '';
   matcher = new MyErrorStateMatcher();
   isLoadingResults = false;
-constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
+constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, 
+  private title: Title) { }
+
 
 ngOnInit() {
+   this.title.setTitle("Login");
   this.loginForm = this.formBuilder.group({
     'email' : [null, Validators.required],
     'password' : [null, Validators.required]
